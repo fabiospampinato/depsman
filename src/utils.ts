@@ -150,8 +150,8 @@ const isPackage = ( value: unknown ): value is Package => {
 
 const isSPDXPermissive = ( spdx: string ): boolean => {
 
-  // const spdxes = new Set ([ 'AGPL-3.0', 'Apache-2.0', 'BSD-2-Clause', 'BSD-3-Clause', 'BSL-1.0', 'CC0-1.0', 'EPL-2.0', 'GPL-2.0', 'GPL-3.0', 'LGPL-2.1', 'MIT', 'MPL-2.0', 'Unlicense', 'ISC' ]);
-  const spdxes = new Set ([ 'Apache-2.0', 'BSD-2-Clause', 'BSD-3-Clause', 'BSL-1.0', 'CC0-1.0', 'MIT', 'Unlicense', 'ISC' ]);
+  // const spdxes = new Set ([ 'AGPL-3.0', 'Apache-2.0', 'BSD-2-Clause', 'BSD-3-Clause', 'BSL-1.0', 'CC0-1.0', 'EPL-2.0', 'GPL-2.0', 'GPL-3.0', 'LGPL-2.1', 'MIT', 'MPL-2.0', 'Unlicense', 'ISC', '0BSD' ]);
+  const spdxes = new Set ([ 'Apache-2.0', 'BSD-2-Clause', 'BSD-3-Clause', 'BSL-1.0', 'CC0-1.0', 'MIT', 'Unlicense', 'ISC', '0BSD' ]);
 
   return spdxes.has ( spdx );
 
