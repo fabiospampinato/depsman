@@ -9,7 +9,7 @@ import Depsman from '.';
 /* HELPERS */
 
 const name = 'depsman';
-const version = '1.0.3';
+const version = '1.1.0';
 const description = 'Extract and report metadata about dependencies of the current package.';
 
 /* MAIN */
