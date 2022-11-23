@@ -2,8 +2,8 @@
 /* IMPORT */
 
 import {exit, inspect} from './utils';
-import {getReportSimple, getReportAdvanced, getReportESM, getReportLicense, getReportGitHub, getReportOwner} from './utils';
-import {printReportSimple, printReportAdvanced, printReportESM, printReportLicense, printReportGitHub, printReportOwner} from './utils';
+import {getReportSimple, getReportAdvanced, getReportESM, getReportLicense, getReportGitHub, getReportOwner, getReportDuplicates} from './utils';
+import {printReportSimple, printReportAdvanced, printReportESM, printReportLicense, printReportGitHub, printReportOwner, printReportDuplicates} from './utils';
 import type {ReportSimple, ReportAdvanced, ReportESM, ReportLicense, ReportGitHub, ReportOwner} from './types';
 
 /* MAIN */
@@ -18,7 +18,8 @@ const Depsman = new class {
   async get ( type: 'license' ): Promise<ReportLicense>
   async get ( type: 'github' ): Promise<ReportGitHub>
   async get ( type: 'owner' ): Promise<ReportOwner>
-  async get ( type: 'simple' | 'advanced' | 'esm' | 'license' | 'github' | 'owner' ) {
+  async get ( type: 'duplicates' ): Promise<ReportOwner>
+  async get ( type: 'simple' | 'advanced' | 'esm' | 'license' | 'github' | 'owner' | 'duplicates' ) {
 
     if ( type === 'simple' ) {
 
@@ -44,6 +45,10 @@ const Depsman = new class {
 
       return getReportOwner ();
 
+    } else if ( type === 'duplicates' ) {
+
+      return getReportDuplicates ();
+
     } else {
 
       exit ( `Unsupported report: "${type}"` );
@@ -58,7 +63,8 @@ const Depsman = new class {
   async printJSON ( type: 'license' ): Promise<void>
   async printJSON ( type: 'github' ): Promise<void>
   async printJSON ( type: 'owner' ): Promise<void>
-  async printJSON ( type: 'simple' | 'advanced' | 'esm' | 'license' | 'github' | 'owner' ): Promise<void> {
+  async printJSON ( type: 'duplicates' ): Promise<void>
+  async printJSON ( type: 'simple' | 'advanced' | 'esm' | 'license' | 'github' | 'owner' | 'duplicates' ): Promise<void> {
 
     if ( type === 'simple' ) {
 
@@ -84,6 +90,10 @@ const Depsman = new class {
 
       inspect ( await getReportOwner () );
 
+    } else if ( type === 'duplicates' ) {
+
+      inspect ( await getReportDuplicates () );
+
     } else {
 
       exit ( `Unsupported report: "${type}"` );
@@ -98,7 +108,8 @@ const Depsman = new class {
   async printHuman ( type: 'license' ): Promise<void>
   async printHuman ( type: 'github' ): Promise<void>
   async printHuman ( type: 'owner' ): Promise<void>
-  async printHuman ( type: 'simple' | 'advanced' | 'esm' | 'license' | 'github' | 'owner' ): Promise<void> {
+  async printHuman ( type: 'duplicates' ): Promise<void>
+  async printHuman ( type: 'simple' | 'advanced' | 'esm' | 'license' | 'github' | 'owner' | 'duplicates' ): Promise<void> {
 
     if ( type === 'simple' ) {
 
@@ -123,6 +134,10 @@ const Depsman = new class {
     } else if ( type === 'owner' ) {
 
       printReportOwner ( await getReportOwner () );
+
+    } else if ( type === 'duplicates' ) {
+
+      printReportDuplicates ( await getReportDuplicates () );
 
     } else {
 

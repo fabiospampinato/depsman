@@ -25,7 +25,7 @@ program
   .option ( '--dev', 'Include only development dependencies' )
   .option ( '--prod', 'Include only production dependencies' )
   .option ( '--json', 'Output the report as JSON' )
-  .option ( '--report <report>', 'Report to generate: simple, advanced, esm, license, github, owner', 'simple' )
+  .option ( '--report <report>', 'Report to generate: simple, advanced, esm, license, github, owner, duplicates', 'simple' )
   .option ( '--token <token>', 'GitHub personal access token' )
   .action ( async options => {
     if ( options.dev ) exit ( 'The "--dev" flag is not yet supported' );

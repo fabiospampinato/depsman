@@ -14,7 +14,7 @@ import readdir from 'tiny-readdir';
 import {ARGV, CACHE_VERSION, GITHUB_TOKEN, HAS_COLORS, IS_FRESH} from './constants';
 import type {DependencyRoot, DependencyNode, DependencyNodes, DependencySimple, DependencyAdvanced} from './types';
 import type {Package, Repository} from './types';
-import type {ReportSimple, ReportAdvanced, ReportESM, ReportLicense, ReportGitHub, ReportOwner} from './types';
+import type {ReportSimple, ReportAdvanced, ReportESM, ReportLicense, ReportGitHub, ReportOwner, ReportDuplicates} from './types';
 
 /* UTILS - LANG */
 
@@ -537,6 +537,21 @@ const getReportOwner = async (): Promise<ReportOwner> => {
 
 };
 
+const getReportDuplicates = async (): Promise<ReportDuplicates> => {
+
+  const advanceds = await getReportAdvanced ();
+  const advancedsByDuplicates = groupBy ( advanceds, advanced => advanced.name );
+  const advancedsByDuplicatesSorted = sortKeys ( advancedsByDuplicates, ( a, b ) => b.localeCompare ( a ) );
+
+  Object.keys ( advancedsByDuplicatesSorted ).forEach ( key => {
+    if ( advancedsByDuplicatesSorted[key].length > 2 ) return;
+    delete advancedsByDuplicatesSorted[key];
+  });
+
+  return advancedsByDuplicatesSorted;
+
+};
+
 /* UTILS - PRINT REPORTS */
 
 const printReportSimple = async ( report: ReportSimple ): Promise<void> => {
@@ -684,6 +699,29 @@ const printReportOwner = async ( report: ReportOwner ): Promise<void> => {
 
 };
 
+const printReportDuplicates = async ( report: ReportDuplicates ): Promise<void> => {
+
+  const lines: string[] = [];
+
+  for ( const name in report ) {
+
+    lines.push ( `- ${color.cyan ( name )}` );
+
+    report[name].map ( ({ version, repositoryUrl, repositoryReadmeUrl, repositoryLicenseUrl }) => {
+
+      lines.push ( `  - ${color.gray ( version )}` );
+      lines.push ( `    - Repository: ${repositoryUrl ? color.green ( repositoryUrl ) : color.red ( 'Unknown' )}` );
+      lines.push ( `    - Readme: ${repositoryReadmeUrl ? color.green ( repositoryReadmeUrl ) : color.red ( 'Unknown' )}` );
+      lines.push ( `    - License: ${repositoryLicenseUrl ? color.green ( repositoryLicenseUrl ) : color.red ( 'Unknown' )}` );
+
+    });
+
+  }
+
+  return console.log ( lines.join ( '\n' ) );
+
+};
+
 /* EXPORT */
 
 export {exit, inspect, partition};
@@ -691,5 +729,5 @@ export {getCachedJSON, getFileJSON, isPackage};
 export {getDependencyId, getDependencyName, getDependencyPackage, getDependencyAdvanced};
 export {getRepository, getRepositoryFromPackage, getRepositoryContent, getRepositoryOwnerAndRepo, getRepositoryMetadata, getRepositoryReadme, getRepositoryLicense};
 export {getDependenciesPackages, getDependenciesSimple, getDependenciesAdvanced, getDependenciesTree};
-export {getReportSimple, getReportAdvanced, getReportESM, getReportLicense, getReportGitHub, getReportOwner};
-export {printReportSimple, printReportAdvanced, printReportESM, printReportLicense, printReportGitHub, printReportOwner};
+export {getReportSimple, getReportAdvanced, getReportESM, getReportLicense, getReportGitHub, getReportOwner, getReportDuplicates};
+export {printReportSimple, printReportAdvanced, printReportESM, printReportLicense, printReportGitHub, printReportOwner, printReportDuplicates};

@@ -59,8 +59,10 @@ type ReportGitHub = DependencyAdvanced[];
 
 type ReportOwner = Record<string, DependencyAdvanced[]>;
 
+type ReportDuplicates = Record<string, DependencyAdvanced[]>;
+
 /* EXPORT */
 
 export type {DependencyRoot, DependencyNode, DependencyNodes, DependencySimple, DependencyAdvanced};
 export type {Package, Repository};
-export type {ReportSimple, ReportAdvanced, ReportESM, ReportLicense, ReportGitHub, ReportOwner};
+export type {ReportSimple, ReportAdvanced, ReportESM, ReportLicense, ReportGitHub, ReportOwner, ReportDuplicates};
