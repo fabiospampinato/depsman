@@ -186,8 +186,8 @@ $ depsman --report github --prod
   - Issues: 16
   - Repository: https://github.com/component/debounce
   - Owner: https://github.com/component
-  - Issues: https://api.github.com/repos/component/debounce/issues{/number}
-  - Pulls: https://api.github.com/repos/component/debounce/pulls{/number}
+  - Issues: https://api.github.com/repos/component/debounce/issues
+  - Pulls: https://api.github.com/repos/component/debounce/pulls
 - ripstat 2.0.0
   - Description: Fetch the stats for a file as if a saber-tooth tiger is chasing you!
   - Keywords: fast, file, stats
@@ -197,8 +197,8 @@ $ depsman --report github --prod
   - Issues: 0
   - Repository: https://github.com/fabiospampinato/ripstat
   - Owner: https://github.com/fabiospampinato
-  - Issues: https://api.github.com/repos/fabiospampinato/ripstat/issues{/number}
-  - Pulls: https://api.github.com/repos/fabiospampinato/ripstat/pulls{/number}
+  - Issues: https://api.github.com/repos/fabiospampinato/ripstat/issues
+  - Pulls: https://api.github.com/repos/fabiospampinato/ripstat/pulls
 - stubborn-fs 1.2.1
   - Description: Stubborn versions of Node's fs functions that try really hard to do their job.
   - Keywords: attempt, fs, reliable, retry, stubborn
@@ -208,8 +208,8 @@ $ depsman --report github --prod
   - Issues: 0
   - Repository: https://github.com/fabiospampinato/stubborn-fs
   - Owner: https://github.com/fabiospampinato
-  - Issues: https://api.github.com/repos/fabiospampinato/stubborn-fs/issues{/number}
-  - Pulls: https://api.github.com/repos/fabiospampinato/stubborn-fs/pulls{/number}
+  - Issues: https://api.github.com/repos/fabiospampinato/stubborn-fs/issues
+  - Pulls: https://api.github.com/repos/fabiospampinato/stubborn-fs/pulls
 - tiny-readdir 2.1.0
   - Description: A simple promisified recursive readdir function.
   - Keywords: promise, readdir, recursive, simple, tiny
@@ -219,8 +219,8 @@ $ depsman --report github --prod
   - Issues: 0
   - Repository: https://github.com/fabiospampinato/tiny-readdir
   - Owner: https://github.com/fabiospampinato
-  - Issues: https://api.github.com/repos/fabiospampinato/tiny-readdir/issues{/number}
-  - Pulls: https://api.github.com/repos/fabiospampinato/tiny-readdir/pulls{/number}
+  - Issues: https://api.github.com/repos/fabiospampinato/tiny-readdir/issues
+  - Pulls: https://api.github.com/repos/fabiospampinato/tiny-readdir/pulls
 ```
 
 Generate an owner report, for finding how many different people and organizations you depend on, and for what:

@@ -637,8 +637,8 @@ const printReportGitHub = async ( report: ReportGitHub ): Promise<void> => {
       lines.push ( `  - Issues: ${color.yellow ( String ( repository.open_issues ) )}` );
       lines.push ( `  - Repository: ${color.green ( repository.html_url )}` );
       lines.push ( `  - Owner: ${color.green ( repository.owner.html_url )}` );
-      lines.push ( `  - Issues: ${color.green ( repository.issues_url )}` );
-      lines.push ( `  - Pulls: ${color.green ( repository.pulls_url )}` );
+      lines.push ( `  - Issues: ${color.green ( repository.issues_url.replace ( '{/number}', '' ) )}` );
+      lines.push ( `  - Pulls: ${color.green ( repository.pulls_url.replace ( '{/number}', '' ) )}` );
 
     } else {
 
