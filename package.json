@@ -2,7 +2,7 @@
   "name": "depsman",
   "repository": "github:fabiospampinato/depsman",
   "description": "Extract and report metadata about dependencies of the current package.",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "type": "module",
   "bin": "dist/bin.js",
   "main": "dist/index.js",
