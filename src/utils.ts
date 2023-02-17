@@ -1,15 +1,14 @@
 
 /* IMPORT */
 
-import fetch from 'fetch-shim';
 import {isObject, isString, isUndefined} from 'is';
 import {spawnSync} from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import util from 'node:util';
 import sanitizeBasename from 'sanitize-basename';
+import {color} from 'specialist';
 import escapeRegExp from 'string-escape-regex';
-import color from 'tiny-colors';
 import readdir from 'tiny-readdir';
 import {ARGV, CACHE_VERSION, GITHUB_TOKEN, HAS_COLORS, IS_FRESH} from './constants';
 import type {DependencyRoot, DependencyNode, DependencyNodes, DependencySimple, DependencyAdvanced} from './types';

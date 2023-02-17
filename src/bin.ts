@@ -2,39 +2,28 @@
 
 /* IMPORT */
 
-import {program, updater} from 'specialist';
+import {bin} from 'specialist';
 import {exit} from './utils'
 import Depsman from '.';
 
-/* HELPERS */
-
-const name = 'depsman';
-const version = '1.1.0';
-const description = 'Extract and report metadata about dependencies of the current package.';
-
 /* MAIN */
 
-updater ({ name, version });
-
-program
-  .name ( name )
-  .version ( version )
-  .description ( description )
-  .option ( '--no-color', 'Disable colors' )
+bin ( 'depsman', 'Extract and report metadata about dependencies of the current package' )
+  /* DEFAULT COMMAND */
   .option ( '--fresh', 'Ignore the cache, download things again' )
   .option ( '--dev', 'Include only development dependencies' )
   .option ( '--prod', 'Include only production dependencies' )
   .option ( '--json', 'Output the report as JSON' )
-  .option ( '--report <report>', 'Report to generate: simple, advanced, esm, license, github, owner, duplicates', 'simple' )
+  .option ( '--report <report>', 'Report to generate: simple, advanced, esm, license, github, owner, duplicates', { default: 'simple', enum: ['simple', 'advanced', 'esm', 'license', 'github', 'owner', 'duplicates'] } )
   .option ( '--token <token>', 'GitHub personal access token' )
-  .action ( async options => {
-    if ( options.dev ) exit ( 'The "--dev" flag is not yet supported' );
-    if ( options.json ) {
-      await Depsman.printJSON ( options.report );
+  .action ( options => {
+    const {dev, json, report} = options;
+    if ( dev ) exit ( 'The "--dev" flag is not yet supported' );
+    if ( json ) {
+      return Depsman.printJSON ( report );
     } else {
-      await Depsman.printHuman ( options.report );
+      return Depsman.printHuman ( report );
     }
-    process.exit ( 0 );
-  });
-
-program.parse ();
+  })
+  /* RUN */
+  .run ();

@@ -2,15 +2,15 @@
 /* IMPORT */
 
 import process from 'node:process';
-import parseArgv from 'tiny-parse-argv';
+import {parseArgv} from 'specialist';
 
 /* MAIN */
 
-const ARGV = parseArgv ();
+const ARGV = parseArgv ( process.argv );
 
 const CACHE_VERSION = 'v0';
 
-const GITHUB_TOKEN = ARGV['github-token'] || ARGV['token'] || process.env['GITHUB_TOKEN'];
+const GITHUB_TOKEN = ARGV['github-token'] || ARGV['token'] || process.env['DEPSMAN_GITHUB_TOKEN'] || process.env['GITHUB_TOKEN'];
 
 const HAS_COLORS = !( 'NO_COLOR' in process.env ) && !process.argv.includes ( '--no-color' );
 

@@ -32,7 +32,7 @@ PRs or just ideas welcome for new reports or improvements to existing ones.
 
 - Only NPM is supported as a package manager, a regular `node_modules` folder is required.
 - Only GitHub is supported as the git hosting provider, most of the information won't be extracted from other providers.
-- Providing a GitHub personal access token is strongly recommended, via the `--token` option or via the `GITHUB_TOKEN` env variable, or you'll get rate limited pretty quickly.
+- Providing a GitHub personal access token is strongly recommended, via the `--token` option or via the `DEPSMAN_GITHUB_TOKEN` or `GITHUB_TOKEN` env variables, or you'll get rate limited pretty quickly.
 - The first run might take a while, as a lot of information might have to be downloaded.
 - Some edge cases might not be supported yet, if you hit any exceptions please report them.
 - If you are planning on using this tool to generate a report of your dependencies and their licenses you are _strongly_ recommended to review the whole thing manually. Some packages are shipped bundled and their dependencies are not listed as production dependencies, other packages ship WASM ports of libraries from other ecosystems, etc. 100% relying on a tool like this to generate your licenses report is fundamentally risky.
