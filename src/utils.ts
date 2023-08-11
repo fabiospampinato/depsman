@@ -594,7 +594,7 @@ const getReportDuplicates = async (): Promise<ReportDuplicates> => {
 
   const advanceds = await getReportAdvanced ();
   const advancedsByDuplicates = groupBy ( advanceds, advanced => advanced.name );
-  const advancedsByDuplicatesSorted = sortKeys ( advancedsByDuplicates, ( a, b ) => b.localeCompare ( a ) );
+  const advancedsByDuplicatesSorted = sortKeys ( advancedsByDuplicates, ( a, b ) => a.localeCompare ( b ) );
 
   Object.keys ( advancedsByDuplicatesSorted ).forEach ( key => {
     if ( advancedsByDuplicatesSorted[key].length > 1 ) return;
