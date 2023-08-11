@@ -2,8 +2,7 @@
 
 /* IMPORT */
 
-import {bin} from 'specialist';
-import {exit} from './utils'
+import {bin, exit} from 'specialist';
 import Depsman from '.';
 
 /* MAIN */

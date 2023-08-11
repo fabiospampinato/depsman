@@ -7,7 +7,7 @@ import path from 'node:path';
 import process from 'node:process';
 import util from 'node:util';
 import sanitizeBasename from 'sanitize-basename';
-import {color} from 'specialist';
+import {color, exit} from 'specialist';
 import escapeRegExp from 'string-escape-regex';
 import readdir from 'tiny-readdir';
 import {ARGV, CACHE_VERSION, GITHUB_TOKEN, HAS_COLORS, IS_FRESH} from './constants';
@@ -16,14 +16,6 @@ import type {Package, Repository} from './types';
 import type {ReportSimple, ReportAdvanced, ReportESM, ReportLicense, ReportGitHub, ReportOwner, ReportDuplicates} from './types';
 
 /* UTILS - LANG */
-
-const exit = ( message: string ): never => {
-
-  console.log ( color.red ( message ) );
-
-  process.exit ( 1 );
-
-};
 
 const fetchWithGithub = ( url: string ): Promise<Response> => {
 
@@ -741,7 +733,7 @@ const printReportDuplicates = async ( report: ReportDuplicates ): Promise<void> 
 
 /* EXPORT */
 
-export {exit, inspect, partition};
+export {inspect, partition};
 export {getCachedJSON, getFileJSON, isPackage};
 export {getDependencyId, getDependencyName, getDependencyPackage, getDependencyAdvanced};
 export {getRepository, getRepositoryFromPackage, getRepositoryContent, getRepositoryOwnerAndRepo, getRepositoryMetadata, getRepositoryReadme, getRepositoryLicense};

@@ -1,7 +1,8 @@
 
 /* IMPORT */
 
-import {exit, inspect} from './utils';
+import {exit} from 'specialist';
+import {inspect} from './utils';
 import {getReportSimple, getReportAdvanced, getReportESM, getReportLicense, getReportGitHub, getReportOwner, getReportDuplicates} from './utils';
 import {printReportSimple, printReportAdvanced, printReportESM, printReportLicense, printReportGitHub, printReportOwner, printReportDuplicates} from './utils';
 import type {ReportSimple, ReportAdvanced, ReportESM, ReportLicense, ReportGitHub, ReportOwner} from './types';
