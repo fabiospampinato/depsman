@@ -53,6 +53,14 @@ const isObject = ( value: unknown ): value is object => {
 
 };
 
+const isObjectEmpty = ( value: object ): boolean => {
+
+  for ( const _ in value ) return false;
+
+  return true;
+
+};
+
 const isString = ( value: unknown ): value is string => {
 
   return typeof value === 'string';
@@ -407,7 +415,6 @@ const getDependenciesSimple = ( tree: DependencyRoot ): DependencySimple[] => {
 
     for ( const baseName in dependencies ) {
 
-
       const child = dependencies[baseName];
       const name = getDependencyName ( baseName, child );
       const id = getDependencyId ( name, child.version );
@@ -477,14 +484,51 @@ const getDependenciesAdvanced = async ( simples: DependencySimple[], packages: P
 
 };
 
+const getDependenciesTreeWithoutMissingOptionals = ( tree: DependencyRoot ): DependencyRoot => {
+
+  const removeOptionals = ( name: string, node: DependencyNode ): void => {
+
+    const version = node.version;
+
+    for ( const dependency in node.dependencies ) {
+
+      const subnode = node.dependencies[dependency];
+
+      if ( isObjectEmpty ( subnode ) ) { // Missing dependency, most probably an optional one
+
+        const pkg = getDependencyPackage ( name, version );
+
+        if ( pkg.peerDependenciesMeta?.[dependency]?.optional === true || pkg.optionalDependencies?.[dependency] === version ) { // Actual optional dependency, deleting it
+
+          delete node.dependencies[dependency];
+
+        }
+
+      } else {
+
+        removeOptionals ( dependency, subnode );
+
+      }
+
+    }
+
+  };
+
+  removeOptionals ( '', tree );
+
+  return tree;
+
+};
+
 const getDependenciesTree = (): DependencyRoot => {
 
   const scope = ( ARGV['prod'] && !ARGV['dev'] ) ? '--prod' : ( ( ARGV['dev'] && !ARGV['prod'] ) ? '--dev' : '--all' ); //FIXME: https://github.com/npm/cli/issues/5887
   const process = spawnSync ( 'npm', ['ls', scope, '--all', '--json'] );
   const stdout = process.stdout.toString ();
   const tree = JSON.parse ( stdout );
+  const treeWithoutMissingOptionals = getDependenciesTreeWithoutMissingOptionals ( tree );
 
-  return tree;
+  return treeWithoutMissingOptionals;
 
 };
 
