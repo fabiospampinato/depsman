@@ -1,7 +1,6 @@
 
 /* IMPORT */
 
-import {isObject, isString, isUndefined} from 'is';
 import {spawnSync} from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -52,6 +51,24 @@ const groupBy = <T> ( arr: T[], iterator: ( value: T, index: number, arr: T[] ) 
 const inspect = ( value: object ): void => {
 
   console.log ( util.inspect ( value, { colors: HAS_COLORS, depth: Infinity, maxArrayLength: Infinity, maxStringLength: Infinity } ) );
+
+};
+
+const isObject = ( value: unknown ): value is object => {
+
+  return typeof value === 'object' && value !== null;
+
+};
+
+const isString = ( value: unknown ): value is string => {
+
+  return typeof value === 'string';
+
+};
+
+const isUndefined = ( value: unknown ): value is undefined => {
+
+  return typeof value === 'undefined';
 
 };
 

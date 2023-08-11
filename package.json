@@ -21,7 +21,6 @@
     "reports"
   ],
   "dependencies": {
-    "is": "npm:@fabiospampinato/is@^2.5.0",
     "sanitize-basename": "^2.0.0",
     "specialist": "^1.1.0",
     "string-escape-regex": "^1.0.0",
