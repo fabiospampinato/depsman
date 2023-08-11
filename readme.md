@@ -247,6 +247,25 @@ $ depsman --report owner --prod
     - License: https://raw.githubusercontent.com/fabiospampinato/tiny-readdir/master/LICENSE
 ```
 
+Generate a duplicates report, for finding multiple instances of the same package (using another repo for this, since `watcher` has no duplicates):
+
+```
+$ depsman --report duplicates --prod
+- ms
+  - 2.1.3
+    - Repository: https://github.com/vercel/ms
+    - Readme: https://raw.githubusercontent.com/vercel/ms/master/readme.md
+    - License: https://raw.githubusercontent.com/vercel/ms/master/license.md
+  - 2.1.2
+    - Repository: https://github.com/zeit/ms
+    - Readme: https://raw.githubusercontent.com/zeit/ms/master/readme.md
+    - License: https://raw.githubusercontent.com/zeit/ms/master/license.md
+  - 2.0.0
+    - Repository: https://github.com/zeit/ms
+    - Readme: https://raw.githubusercontent.com/zeit/ms/master/readme.md
+    - License: https://raw.githubusercontent.com/zeit/ms/master/license.md
+```
+
 ## License
 
 MIT © Fabio Spampinato
