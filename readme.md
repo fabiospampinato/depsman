@@ -251,19 +251,33 @@ Generate a duplicates report, for finding multiple instances of the same package
 
 ```
 $ depsman --report duplicates --prod
-- ms
-  - 2.1.3
-    - Repository: https://github.com/vercel/ms
-    - Readme: https://raw.githubusercontent.com/vercel/ms/master/readme.md
-    - License: https://raw.githubusercontent.com/vercel/ms/master/license.md
-  - 2.1.2
-    - Repository: https://github.com/zeit/ms
-    - Readme: https://raw.githubusercontent.com/zeit/ms/master/readme.md
-    - License: https://raw.githubusercontent.com/zeit/ms/master/license.md
-  - 2.0.0
-    - Repository: https://github.com/zeit/ms
-    - Readme: https://raw.githubusercontent.com/zeit/ms/master/readme.md
-    - License: https://raw.githubusercontent.com/zeit/ms/master/license.md
+- string_decoder
+  - 1.1.1
+    - Repository: https://github.com/nodejs/string_decoder
+    - Readme: https://raw.githubusercontent.com/nodejs/string_decoder/master/README.md
+    - License: https://raw.githubusercontent.com/nodejs/string_decoder/master/LICENSE
+  - 1.3.0
+    - Repository: https://github.com/nodejs/string_decoder
+    - Readme: https://raw.githubusercontent.com/nodejs/string_decoder/master/README.md
+    - License: https://raw.githubusercontent.com/nodejs/string_decoder/master/LICENSE
+- source-map
+  - 0.7.4
+    - Repository: https://github.com/mozilla/source-map
+    - Readme: https://raw.githubusercontent.com/mozilla/source-map/master/README.md
+    - License: https://raw.githubusercontent.com/mozilla/source-map/master/LICENSE
+  - 0.6.1
+    - Repository: https://github.com/mozilla/source-map
+    - Readme: https://raw.githubusercontent.com/mozilla/source-map/master/README.md
+    - License: https://raw.githubusercontent.com/mozilla/source-map/master/LICENSE
+- semver
+  - 6.3.1
+    - Repository: https://github.com/npm/node-semver
+    - Readme: https://raw.githubusercontent.com/npm/node-semver/master/README.md
+    - License: https://raw.githubusercontent.com/npm/node-semver/master/LICENSE
+  - 7.5.4
+    - Repository: https://github.com/npm/node-semver
+    - Readme: https://raw.githubusercontent.com/npm/node-semver/master/README.md
+    - License: https://raw.githubusercontent.com/npm/node-semver/master/LICENSE
 ```
 
 ## License
